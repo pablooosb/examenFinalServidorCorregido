@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir nave</title>
+    <style>
+        /* Estilo General */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            margin: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra el formulario en la pantalla */
+        }
+
+        /* Estilo del Formulario */
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 400px; /* Evita que el formulario sea demasiado ancho */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Etiquetas (Labels) */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1a2a6c;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Campos de entrada (Inputs) */
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #edf2f7;
+            border-radius: 5px;
+            background-color: #f8fafd;
+            box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1a2a6c;
+            background-color: #fff;
+        }
+
+        /* Botón Submit (Igual que el botón de la página anterior) */
+        button {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(26, 42, 108, 0.2);
+        }
+
+        button:hover {
+            background-color: #344484;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <form th:action="@{/naves/add}" th:object="${nave}" method="post">
+        <label for="nombre nave">Nombre nave</label>
+        <input type="text" th:field="*{nombreNave}">
+
+        <label for="modelo">Modelo</label>
+        <input type="text" th:field="*{modelo}">
+
+        <label for="capacidad de pasajeros">Capacidad de pasajeros</label>
+        <input type="number" th:field="*{capacidadPasajeros}">
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
